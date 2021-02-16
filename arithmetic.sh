@@ -19,7 +19,21 @@ do
 	i=$(( i+1 ))
 done
 echo ${array[@]}
+for ((i = 0; i<${#array[@]}; i++))
+do
 
+    for((j = 0; j<${#array[@]}-i-1; j++))
+    do
+        if [ ${array[j]} -lt ${array[$j+1]} ]
+        then
+
+            temp=${array[j]}
+            array[$j]=${array[$j+1]}
+            array[$j+1]=$temp
+        fi
+    done
+done
+echo ${array[@]}
 
 
 
